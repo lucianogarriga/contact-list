@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+// Agregamos Bootstrap al proyecto 
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './App.jsx'
 import './index.css'
 
