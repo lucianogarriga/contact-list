@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Contact } from "../models/contact.class";
 import "../../styles/contact.scss";
 
-const ContactItem = ({ contact, connected }) => {
+const ContactItem = ({ contact, connected, remove }) => {
   // useEffect p/ saber cuando editemos, modifiquemos un contact
   useEffect(() => {
     console.log("Contacto creado");
@@ -36,7 +36,7 @@ const ContactItem = ({ contact, connected }) => {
       <td>
         <span className="align-middle" >
           {stateContact()}
-          <i className="bi-trash" style={{color:'tomato', paddingLeft:"3px"}}></i>
+          <i onClick={() => remove(contact)} className="bi-trash" style={{color:'tomato', paddingLeft:"3px", cursor:'pointer'}}></i>
         </span>
       </td>
     </tr>
@@ -45,7 +45,8 @@ const ContactItem = ({ contact, connected }) => {
 
 ContactItem.propTypes = {
   contact: PropTypes.instanceOf(Contact).isRequired,
-  connected: PropTypes.func.isRequired
+  connected: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired
 };
 
 export default ContactItem;
