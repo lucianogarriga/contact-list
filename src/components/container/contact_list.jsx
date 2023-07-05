@@ -6,9 +6,10 @@ import ContactForm from "../pure/contactForm";
 
 const ContactList = () => {
   const defaultContact1 = new Contact("Mariano", "Gomez", true);
-  const defaultContact2 = new Contact("Ariel", "Perez", true);
+  const defaultContact2 = new Contact("Ariel", "Perez", true); 
+  const defaultContact3 = new Contact("Eric", "Gutierrez", false);
   // Estado inicial con useState
-  const [contact, setContact] = useState([defaultContact1, defaultContact2]);
+  const [contact, setContact] = useState([defaultContact1, defaultContact2, defaultContact3]);
   // State Loading
   const [loading, setLoading] = useState(true);
 
@@ -21,9 +22,17 @@ const ContactList = () => {
     };
   }, [contact]);
 
-  const changeConnected = () => {
-    console.log("MARCAR ESTADO DE CONTACTO");
-  };
+  function connectedContact(cont){
+    // Debemos obtener el index de cada contacto
+    const index = contact.indexOf(cont);
+    // Iremos almacenando en una var temporal cada uno de los contactos
+    const tempContact = [...contact];
+    // En la var temporal, en la posicion del index,
+    // diremos que su propiedad 'connected' vamos a asignarle un nuevo valor
+    // y a través del setter le pasaremos el valor contrario
+    tempContact[index].connected = !tempContact[index].connected 
+    setContact(tempContact)
+  }
 
   return (
     <div>
@@ -42,15 +51,15 @@ const ContactList = () => {
             <table>
               <thead>
                 <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Surame</th>
-                  <th scope="col">State</th>
+                  <th scope="col" className="col-3">Name</th>
+                  <th scope="col" className="col-3">Surame</th>
+                  <th scope="col" className="col-6">State</th>
                 </tr>
               </thead>
               <tbody>
                 {/* TODO: map sobre distintos contactos */}
                 {contact.map((cont, index) => {
-                  return <ContactItem key={index} contact={cont} />;
+                  return <ContactItem key={index} contact={cont} connected={connectedContact}/>;
                 })}
               </tbody>
             </table>

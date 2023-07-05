@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Contact } from "../models/contact.class";
 import "../../styles/contact.scss";
 
-const ContactItem = ({ contact }) => {
+const ContactItem = ({ contact, connected }) => {
   // useEffect p/ saber cuando editemos, modifiquemos un contact
   useEffect(() => {
     console.log("Contacto creado");
@@ -15,9 +15,9 @@ const ContactItem = ({ contact }) => {
 //   State Function - Connected/Disconnected
   function stateContact(){
     if(contact.connected)  { 
-        return (<span style={{color: 'green', fontWeight:'bold'}}>CONNECTED</span>)
+        return (<button onClick={() => connected(contact)} style={{color: 'green', paddingLeft:'16px', paddingRight:'16px', fontWeight:'bold', cursor:'pointer' }}>Connected</button>)
     } else { 
-        return (<span style={{color: 'red', fontWeight:'bold'}}>DISCONNECTED</span>)
+        return (<button onClick={() => connected(contact)} style={{color: 'tomato', fontWeight:'bold' , cursor:'pointer' }}>Disconnected</button>)
     }
   }
 
@@ -34,9 +34,9 @@ const ContactItem = ({ contact }) => {
         </span>
       </td>
       <td>
-        <span className="align-middle" style={{ padding: "10px" }}>
+        <span className="align-middle" >
           {stateContact()}
-          <i className="bi-trash" style={{color:'tomato', paddingLeft:"10px"}}></i>
+          <i className="bi-trash" style={{color:'tomato', paddingLeft:"3px"}}></i>
         </span>
       </td>
     </tr>
@@ -44,7 +44,8 @@ const ContactItem = ({ contact }) => {
 };
 
 ContactItem.propTypes = {
-  contact: PropTypes.instanceOf(Contact),
+  contact: PropTypes.instanceOf(Contact).isRequired,
+  connected: PropTypes.func.isRequired
 };
 
 export default ContactItem;
