@@ -54,19 +54,15 @@ const ContactList = () => {
   }
 
   return (
-    <div>
-      <h1 className="contact-title">Contact list</h1>
-      <div className="col-12">
+    <>
+      <h1 className="contact-title">Contact list</h1> 
         <div className="card">
-          {/* Card Header */}
-          <div className="card-header p-3"> 
-          </div>
+          {/* Card Header */} 
           {/* Body - Content */}
           <div
-            className="card-body"
-            style={{ position: "relative", height: "100px" }}
+            className="card-body"  
           >
-            <table>
+            <table >
               <thead>
                 <tr>
                   <th scope="col" className="col-3">Name</th>
@@ -81,11 +77,10 @@ const ContactList = () => {
                 })}
               </tbody>
             </table>
-          </div>
-        </div>
+          </div> 
       </div>
-          <ContactForm  add={addContact}/>
-    </div>
+          <ContactForm add={addContact}/>
+    </>
   );
 };
 

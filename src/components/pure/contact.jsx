@@ -23,20 +23,20 @@ const ContactItem = ({ contact, connected, remove }) => {
 
   return (
     <tr className="fw-normal" >
-      <td>
-        <span className="align-middle" style={{ padding: "10px" }}> 
+    <td style={{paddingBottom: "10px", paddingTop:"10px"}}>
+        <span className="align-middle" style={{ padding: "4px" }}> 
           {contact.name}
         </span>
       </td>
-      <td>
-        <span className="align-middle" style={{ padding: "10px" }}> 
+    <td style={{paddingBottom: "10px", paddingTop:"10px"}}>
+        <span className="align-middle" style={{ padding: "4px" }}> 
           {contact.surname}
         </span>
       </td>
-      <td>
+    <td style={{paddingBottom: "10px", paddingTop:"10px"}}>
         <span className="align-middle" >
           {stateContact()}
-          <i onClick={() => remove(contact)} className="bi-trash" style={{color:'tomato', paddingLeft:"3px", cursor:'pointer'}}></i>
+          <i onClick={() => remove(contact)} className="bi-trash" style={{color:'tomato', paddingLeft: "12px", cursor:'pointer'}}></i>
         </span>
       </td>
     </tr>

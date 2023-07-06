@@ -23,14 +23,13 @@ const ContactForm = ({add}) => {
 
     return (
 
-        <form onSubmit={addContact} className='d-flex justify-content-center align-items-center mb-4'>
+        <form onSubmit={addContact} className='form-contact'>
             <div className='form-outline flex-fill'>
-                <input ref={nameRef} id='inputName' type='text' className='form-control form-control-lg' placeholder='Insert the name' required/>
-                </div>
-                <div className='form-outline flex-fill'>
-                <input ref={surnameRef} id='inputSurname' type='text' className='form-control form-control-lg' placeholder='Insert the surname' required/>
-                </div>
-            <button type='submit' className='btn btn-success btn-lg'>Add contact</button>
+                <input ref={nameRef} id='inputName' type='text' className='form-control input-form' placeholder='Insert a name' required/> 
+                <input ref={surnameRef} id='inputSurname' type='text' className='form-control input-form' placeholder='Insert a surname' required/>
+            <button type='submit' className='btn btn-success '>Create contact</button>
+            
+            </div>
         </form>
     );
 }
